@@ -42,6 +42,7 @@ class TextFormatting : JavaPlugin() {
     private fun update() {
         if (!Update.isLatest(this, 103551)) {
             if (configFile?.getBoolean("autoupdate-enabled") == true) {
+                logger.info("An update is available, downloading...")
                 Update.updatePlugin(this, 103551)
             } else {
                 logger.warning("Text Formatting is outdated! There is a newer version available! Please update to the latest version!")

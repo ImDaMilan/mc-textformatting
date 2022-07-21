@@ -11,7 +11,7 @@ class BookEditEvent : Listener {
     @EventHandler
     fun onBookEdit(event: PlayerEditBookEvent) {
         val meta = event.newBookMeta
-        meta.pages = meta.pages.map {
+        meta.pages.replaceAll {
             ChatColor.translateAlternateColorCodes(TextFormatting.configFile!!.getString("colorcode-prefix")!![0], it)
         }
     }
