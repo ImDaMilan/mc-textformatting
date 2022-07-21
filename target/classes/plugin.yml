@@ -1,0 +1,6 @@
+name: TextFormatting
+version: '0.1'
+main: com.imdamilan.textformatting.TextFormatting
+api-version: 1.16
+authors: [ ImDaMilan ]
+description: A plugin for formatting colors and fonts into Minecraft texts!
