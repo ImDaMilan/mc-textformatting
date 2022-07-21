@@ -15,6 +15,13 @@ class TextFormatting : JavaPlugin() {
         Metrics(this, 15860)
         logger.info("Text Formatting is enabled!")
         Bukkit.getServer().pluginManager.registerEvents(PlayerChatEvent(), this)
+        if (!Update.isLatest(this, 103551)) {
+            if (configFile!!.getBoolean("autoupdate-enabled")) {
+                Update.updatePlugin(this, 103551)
+            } else {
+                logger.warning("Text Formatting is outdated! There is a newer version available! Please update to the latest version!")
+            }
+        }
     }
 
     override fun onDisable() {
