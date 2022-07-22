@@ -33,7 +33,7 @@ class TextFormatting : JavaPlugin() {
     private fun initConfig() {
         this.saveDefaultConfig()
         configFile = this.config
-        configFile!!.addDefault("colorcode-prefix", "%")
+        configFile!!.addDefault("colorcode-prefix", "$")
         configFile!!.addDefault("autoupdate-enabled", true)
         configFile!!.options().copyDefaults(true)
         this.saveConfig()
