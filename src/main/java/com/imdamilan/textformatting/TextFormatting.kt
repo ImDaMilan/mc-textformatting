@@ -2,6 +2,7 @@ package com.imdamilan.textformatting
 
 import com.imdamilan.textformatting.event.BookEditEvent
 import com.imdamilan.textformatting.event.PlayerChatEvent
+import com.imdamilan.textformatting.event.SignChangeEvent
 import org.bstats.bukkit.Metrics
 import org.bukkit.Bukkit
 import org.bukkit.configuration.file.FileConfiguration
@@ -11,8 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin
 class TextFormatting : JavaPlugin() {
 
     companion object {
-        var instance: Plugin? = null
-        var configFile: FileConfiguration? = null
+        lateinit var instance: Plugin
+        lateinit var configFile: FileConfiguration
     }
 
     override fun onEnable() {
@@ -24,6 +25,7 @@ class TextFormatting : JavaPlugin() {
         logger.info("Text Formatting is enabled!")
         Bukkit.getServer().pluginManager.registerEvents(PlayerChatEvent(), this)
         Bukkit.getServer().pluginManager.registerEvents(BookEditEvent(), this)
+        Bukkit.getServer().pluginManager.registerEvents(SignChangeEvent(), this)
     }
 
     override fun onDisable() {
@@ -33,15 +35,15 @@ class TextFormatting : JavaPlugin() {
     private fun initConfig() {
         this.saveDefaultConfig()
         configFile = this.config
-        configFile!!.addDefault("colorcode-prefix", "$")
-        configFile!!.addDefault("autoupdate-enabled", true)
-        configFile!!.options().copyDefaults(true)
+        configFile.addDefault("colorcode-prefix", "$")
+        configFile.addDefault("autoupdate-enabled", true)
+        configFile.options().copyDefaults(true)
         this.saveConfig()
     }
 
     private fun update() {
         if (!Update.isLatest(this, 103551)) {
-            if (configFile?.getBoolean("autoupdate-enabled") == true) {
+            if (configFile.getBoolean("autoupdate-enabled")) {
                 logger.info("An update is available, downloading...")
                 Update.updatePlugin(this, 103551)
             } else {

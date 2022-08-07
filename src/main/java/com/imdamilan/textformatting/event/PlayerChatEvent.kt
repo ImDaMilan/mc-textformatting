@@ -10,8 +10,10 @@ class PlayerChatEvent : Listener {
 
     @EventHandler
     fun onPlayerChat(event: AsyncPlayerChatEvent) {
-        val formattedMessage = ChatColor.translateAlternateColorCodes(
-            TextFormatting.configFile!!.getString("colorcode-prefix")!![0], event.message)
-        event.message = formattedMessage
+        if (event.player.hasPermission("textformatting.chat")) {
+            val formattedMessage = ChatColor.translateAlternateColorCodes(
+                TextFormatting.configFile.getString("colorcode-prefix")!![0], event.message)
+            event.message = formattedMessage
+        }
     }
 }

@@ -4,3 +4,13 @@ main: com.imdamilan.textformatting.TextFormatting
 api-version: 1.16
 authors: [ ImDaMilan ]
 description: A plugin for formatting colors and fonts into Minecraft texts!
+permissions:
+  textformatting.chat:
+    description: Allows the player to format their chat messages.
+    default: true
+  textformatting.book:
+    description: Allows the player to format their book messages.
+    default: true
+  textformatting.sign:
+    description: Allows the player to format their sign messages.
+    default: true
